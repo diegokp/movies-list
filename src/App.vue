@@ -44,7 +44,7 @@ function showModal (id) {
   showMovieModal.value = true
 }
 
-function Fav(id) {
+function fav(id) {
   alert('Fav add button '+id)
 }
 
@@ -92,7 +92,7 @@ const handleSearch = (search) => {
           :movie="movie"
           :urlImage="urlImage"
           @showModal="showModal(movie.id)"
-          @Fav="Fav(movie.id)"
+          @fav="fav(movie.id)"
         >
         <div class="movie-item-star-icon-container-button">
           <button v-for="star in 5"

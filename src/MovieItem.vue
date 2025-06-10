@@ -6,14 +6,14 @@ const props = defineProps({
     urlImage: String
 })
 
-const emit = defineEmits(["showModal"])
+const emit = defineEmits(["showModal", "fav"])
 
 function showModal() {
     emit("showModal", props.movie.id)
 }
 
-function Fav(){
-   emit("Fav", props.movie.id)
+function fav(){
+   emit("fav", props.movie.id)
 }
 
 </script>
@@ -23,7 +23,7 @@ function Fav(){
         <div class="movie-item">
           <div class="movie-item-image-wrapper">
             <HeartIcon
-              @click="Fav()"
+              @click="fav()"
               class="absolute top-2 right-2 h-8 w-8 text-gray-400  hover:text-rose-500 hover:cursor-pointer"
             />
             <div class="movie-item-image">
