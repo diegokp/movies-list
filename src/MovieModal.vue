@@ -1,4 +1,6 @@
 <script setup>
+import {XMarkIcon } from "@heroicons/vue/24/solid"
+
 
 defineProps({
     currentMovie: { type: Object, default: null }
@@ -11,7 +13,7 @@ const emit = defineEmits(['closeModal'])
 
 <template>
     <div class="modal-wrapper-inner">
-        <button @click="emit('closeModal')" class="absolute right-4 top-4 text-sm">Cerrar</button>
+        <XMarkIcon @click="emit('closeModal')" class="absolute right-4 top-4 h-8 w-8 hover:text-indigo-500 hover:cursor-pointer"></XMarkIcon>
         <span class="text-2xl  font-semibold">{{ currentMovie.title }}</span>
         <p>{{ currentMovie.overview }}</p>
         <p>Fecha: {{ currentMovie.release_date}}</p>

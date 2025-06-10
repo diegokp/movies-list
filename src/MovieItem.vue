@@ -24,7 +24,7 @@ function Fav(){
           <div class="movie-item-image-wrapper">
             <HeartIcon
               @click="Fav()"
-              class="absolute top-2 right-2 h-8 w-8 text-gray-400 "
+              class="absolute top-2 right-2 h-8 w-8 text-gray-400  hover:text-rose-500 hover:cursor-pointer"
             />
             <div class="movie-item-image">
               <img :src="`${urlImage}${movie.poster_path}`" alt="">
