@@ -14,11 +14,10 @@ const movies= ref([])
 
 const urlImage = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"
 
-// const movies = ref(items)
 const currentMovie = ref()
 const showMovieModal= ref(false)
 const loading = ref(true)
-const searchFilter = ref("")
+const searchFilter = ref([])
 
 
 const fetchData = async () => {
@@ -44,8 +43,8 @@ function showModal (id) {
   showMovieModal.value = true
 }
 
-function Fav(id) {
-  alert('Fav add button '+id)
+function fav(movie) {
+ alert('Add fav id: '+movie)
 }
 
 function closeModal (){
@@ -92,7 +91,7 @@ const handleSearch = (search) => {
           :movie="movie"
           :urlImage="urlImage"
           @showModal="showModal(movie.id)"
-          @Fav="Fav(movie.id)"
+          @fav="fav(movie.id)"
         >
         <div class="movie-item-star-icon-container-button">
           <button v-for="star in 5"
