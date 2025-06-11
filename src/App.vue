@@ -4,13 +4,16 @@ import { ref, computed } from "vue";
 import MovieItem from "@/MovieItem.vue"
 import MovieModal from "@/MovieModal.vue";
 import LoadSpiner from "./LoadSpiner.vue";
-
 import { StarIcon } from "@heroicons/vue/24/solid";
-
-
 import SearchForm from "./SearchForm.vue";
+import { useFavoriteStore } from "@/store/favorites"
+
 
 const movies= ref([])
+
+const useFavoritos = useFavoriteStore()
+
+const {addFav} = useFavoritos
 
 const urlImage = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"
 
@@ -43,9 +46,9 @@ function showModal (id) {
   showMovieModal.value = true
 }
 
-function fav(movie) {
- alert('Add fav id: '+movie)
-}
+// function fav(movie) {
+//  alert('Add fav id: '+movie)
+// }
 
 function closeModal (){
   showMovieModal.value = false
@@ -91,7 +94,7 @@ const handleSearch = (search) => {
           :movie="movie"
           :urlImage="urlImage"
           @showModal="showModal(movie.id)"
-          @fav="fav(movie.id)"
+          @addFav="addFav(movie)"
         >
         <div class="movie-item-star-icon-container-button">
           <button v-for="star in 5"

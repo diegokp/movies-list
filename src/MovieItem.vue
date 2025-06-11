@@ -1,19 +1,20 @@
 <script setup>
 import { HeartIcon} from "@heroicons/vue/24/solid";
 
+
 const props = defineProps({
     movie: { type: Object, default: null },
     urlImage: String
 })
 
-const emit = defineEmits(["showModal" ,"fav"])
+const emit = defineEmits(["showModal" ,"addFav"])
 
 function showModal() {
     emit("showModal", props.movie.id)
 }
 
-function fav(){
-   emit("fav", props.movie)
+function addFav(){
+   emit("addFav", props.movie)
 }
 
 </script>
@@ -23,7 +24,7 @@ function fav(){
         <div class="movie-item">
           <div class="movie-item-image-wrapper">
             <HeartIcon
-              @click="fav()"
+              @click="addFav(movie)" :disabled="true"
               class="absolute top-2 right-2 h-8 w-8 text-gray-400  hover:text-rose-500 hover:cursor-pointer"
             />
             <div class="movie-item-image">
