@@ -31,8 +31,8 @@ const fetchData = async () => {
     loading.value = false
   }
 }
-
 fetchData();
+
 
 function updateRating(movieIndex, rating) {
   movies.value[movieIndex].vote_average = rating*2;
