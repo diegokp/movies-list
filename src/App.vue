@@ -14,11 +14,10 @@ const movies= ref([])
 
 const urlImage = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"
 
-// const movies = ref(items)
 const currentMovie = ref()
 const showMovieModal= ref(false)
 const loading = ref(true)
-const searchFilter = ref("")
+const searchFilter = ref([])
 
 
 const fetchData = async () => {
@@ -32,8 +31,8 @@ const fetchData = async () => {
     loading.value = false
   }
 }
-
 fetchData();
+
 
 function updateRating(movieIndex, rating) {
   movies.value[movieIndex].vote_average = rating*2;
