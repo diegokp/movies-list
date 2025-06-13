@@ -1,5 +1,10 @@
 <script setup>
 import { HeartIcon} from "@heroicons/vue/24/solid";
+import { useFavoriteStore } from "@/store/favorites"
+
+const useFavoritos = useFavoriteStore()
+
+const {findFavs} = useFavoritos
 
 const props = defineProps({
     movie: { type: Object, default: null },
@@ -23,8 +28,9 @@ function fav(){
         <div class="movie-item">
           <div class="movie-item-image-wrapper">
             <HeartIcon
-              @click="fav()"
+              @click="fav(movie)"
               class="absolute top-2 right-2 h-8 w-8 text-gray-400  hover:text-rose-500 hover:cursor-pointer"
+              :class="{'text-rose-500' : findFavs(movie.id)}"
             />
             <div class="movie-item-image">
               <img :src="`${urlImage}${movie.poster_path}`" alt="">
