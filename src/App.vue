@@ -7,11 +7,10 @@ import { RouterView, RouterLink } from "vue-router";
 
 
 <template>
-  <nav>
+  <nav class="w-full py-6 px-10 text-white flex justify-end gap-4 static bg-slate-800/30 ">
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/favs">Favorites</RouterLink>
-
-</nav>
+  </nav>
   <RouterView />
 </template>
 

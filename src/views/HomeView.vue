@@ -15,7 +15,7 @@ const movies= ref([])
 
 const useFavoritos = useFavoriteStore()
 
-const {addFav} = useFavoritos
+const {add} = useFavoritos
 
 const urlImage = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"
 
@@ -74,7 +74,7 @@ const handleSearch = (search) => {
 </script>
 
 <template>
-      <LoadSpiner  v-if="loading"/>
+    <LoadSpiner  v-if="loading"/>
     <div class="app" v-else>
       <div v-if="showMovieModal" class="modal-wrapper" @click="closeModal()">
         <MovieModal
@@ -95,7 +95,7 @@ const handleSearch = (search) => {
           :movie="movie"
           :urlImage="urlImage"
           @showModal="showModal(movie.id)"
-          @addFav="addFav(movie)"
+          @fav="add(movie)"
         >
         <div class="movie-item-star-icon-container-button">
           <button v-for="star in 5"
