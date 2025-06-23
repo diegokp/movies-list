@@ -6,7 +6,6 @@ export const useFavoriteStore = defineStore('favs', () => {
 
     const add = (currentMovie) => {
         favs.value.push(currentMovie)
-        console.log(favs.value)
     };
 
     const remove = (id) => {
@@ -22,7 +21,6 @@ export const useFavoriteStore = defineStore('favs', () => {
         add,
         remove,
         findFavs
-
     }
 
 })

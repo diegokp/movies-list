@@ -1,5 +1,6 @@
 <script setup>
-import { HeartIcon} from "@heroicons/vue/24/solid";
+
+import { HeartIcon } from "@heroicons/vue/24/solid";
 import { useFavoriteStore } from "@/store/favorites"
 
 const useFavoritos = useFavoriteStore()
@@ -8,7 +9,8 @@ const {findFavs} = useFavoritos
 
 const props = defineProps({
     movie: { type: Object, default: null },
-    urlImage: String
+    urlImage: String,
+    showDelete: Boolean
 })
 
 const emit = defineEmits(["showModal", "fav"])
@@ -17,9 +19,9 @@ function showModal() {
     emit("showModal", props.movie.id)
 }
 
-function fav(){
-   emit("fav", props.movie.id)
-}
+// function fav(){
+//    emit("fav", props.movie.id)
+// }
 
 </script>
 
@@ -27,11 +29,26 @@ function fav(){
 <template>
         <div class="movie-item">
           <div class="movie-item-image-wrapper">
-            <HeartIcon
-              @click="fav(movie)"
-              class="absolute top-2 right-2 h-8 w-8 text-gray-400  hover:text-rose-500 hover:cursor-pointer"
+            <button v-if="showDelete"
+              class="absolute top-2 right-2 hover:cursor-pointer"
+              @click="emit('fav', movie)"
+            >
+              <HeartIcon
+              class="h-8 w-8 hover:text-gray-400 text-rose-500"
               :class="{'text-rose-500' : findFavs(movie.id)}"
-            />
+              />
+            </button>
+            <button v-else
+              class="absolute top-2 right-2 hover:cursor-pointer"
+              @click="emit('fav', movie)"
+              :disabled="findFavs(movie.id)"
+              :class="{'hover:cursor-auto':findFavs(movie.id)}"
+            >
+              <HeartIcon
+              class="h-8 w-8 text-gray-400  hover:text-rose-500"
+              :class="{'text-rose-500' : findFavs(movie.id)}"
+              />
+            </button>
             <div class="movie-item-image">
               <img :src="`${urlImage}${movie.poster_path}`" alt="">
             </div>

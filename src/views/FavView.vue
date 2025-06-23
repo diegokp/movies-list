@@ -30,7 +30,6 @@ function closeModal (){
   showMovieModal.value = false
 }
 
-
 </script>
 
 <template>
@@ -42,7 +41,7 @@ function closeModal (){
         />
       </div>
       <div class=" h-56 w-auto p-6 flex justify-center items-center flex-col gap-6">
-        <h1 class="text-indigo-500 text-6xl font-semibold">My list</h1>
+        <h1 class="text-indigo-500 text-6xl font-semibold">My favourite list</h1>
       </div>
       <div class="movie-list">
         <MovieItem
@@ -50,6 +49,7 @@ function closeModal (){
           :key="movie.id"
           :movie="movie"
           :urlImage="urlImage"
+          :showDelete="true"
           @showModal="showModal(movie.id)"
           @fav="remove(movie.id)"
         >

@@ -94,6 +94,7 @@ const handleSearch = (search) => {
           :key="movie.id"
           :movie="movie"
           :urlImage="urlImage"
+          :showDelete="false"
           @showModal="showModal(movie.id)"
           @fav="add(movie)"
         >
