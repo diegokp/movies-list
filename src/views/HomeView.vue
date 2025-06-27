@@ -48,9 +48,6 @@ function showModal (id) {
   showMovieModal.value = true
 }
 
-// function fav(movie) {
-//  alert('Add fav id: '+movie)
-// }
 
 function closeModal (){
   showMovieModal.value = false

@@ -1,8 +1,8 @@
 <script setup>
-import { ref} from "vue";
+import { ref, computed} from "vue";
 import MovieItem from "@/MovieItem.vue"
 import MovieModal from "@/MovieModal.vue";
-// import { StarIcon } from "@heroicons/vue/24/solid";
+import { StarIcon } from "@heroicons/vue/24/solid";
 import { useFavoriteStore } from "@/store/favorites"
 import { storeToRefs } from "pinia";
 
@@ -16,15 +16,14 @@ const currentMovie = ref()
 const showMovieModal= ref(false)
 const urlImage = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"
 
-
+const countMovies = computed(() => {
+  return favs.value.length
+})
 function showModal (id) {
   currentMovie.value = favs.value.find((movie) => movie.id === id)
   showMovieModal.value = true
 }
 
-// function fav(movie) {
-//  alert('Add fav id: '+movie)
-// }
 
 function closeModal (){
   showMovieModal.value = false
@@ -41,7 +40,7 @@ function closeModal (){
         />
       </div>
       <div class=" h-56 w-auto p-6 flex justify-center items-center flex-col gap-6">
-        <h1 class="text-indigo-500 text-6xl font-semibold">My favourite list</h1>
+        <h1 class="text-indigo-500 text-6xl font-semibold">My favourite list ({{ countMovies }})</h1>
       </div>
       <div class="movie-list">
         <MovieItem
@@ -54,7 +53,7 @@ function closeModal (){
           @fav="remove(movie.id)"
         >
         <div class="movie-item-star-icon-container-button">
-          <!-- <button v-for="star in 5"
+          <button v-for="star in 5"
             :key="star"
             class="movie-item-star-icon-button"
             :class="[
@@ -62,7 +61,7 @@ function closeModal (){
             ]"
             >
             <StarIcon id="rating" class="movie-item-star-icon flex-1" />
-          </button> -->
+          </button>
         </div>
       </MovieItem>
     </div>
